@@ -50,6 +50,7 @@
     <Compile Include="Tasks\Multiple.cs" />
     <Compile Include="Tasks\NonBlocking.cs" />
     <Compile Include="Tasks\Parallels.cs" />
+    <Compile Include="Thread Pool\Threading.cs" />
     <Compile Include="Timers\CheckTime.cs" />
   </ItemGroup>
   <ItemGroup>

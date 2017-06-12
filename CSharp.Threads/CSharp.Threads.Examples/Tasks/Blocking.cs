@@ -14,6 +14,7 @@ namespace CSharp.Threads.Examples.Tasks
 
             task.Wait();
 
+            // task.Result executes internaly the task.wait() method
             Console.WriteLine("Result: " + task.Result);
         }
 
