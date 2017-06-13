@@ -1,4 +1,5 @@
-﻿using CSharp.Threads.Examples.Tasks;
+﻿using CSharp.Threads.Examples.Basics;
+using CSharp.Threads.Examples.Tasks;
 using CSharp.Threads.Examples.Thread_Pool;
 using CSharp.Threads.Examples.Timers;
 using System;
@@ -31,15 +32,19 @@ namespace CSharp.Threads.Examples
             //var parallels = new Parallels();
             //parallels.Execute();
 
-            var threading = new Threading();
-            threading.Execute(1);
-            threading.Execute(2);
-            threading.Execute(3);
-            threading.Execute(4);
-            threading.Execute(5);
-            threading.Execute(6);
-            threading.Execute(7);
-            threading.Execute(8);
+            //var threading = new Threading();
+            //threading.Execute(1);
+            //threading.Execute(2);
+            //threading.Execute(3);
+            //threading.Execute(4);
+            //threading.Execute(5);
+            //threading.Execute(6);
+            //threading.Execute(7);
+            //threading.Execute(8);
+
+            // Basics
+            var multipleCores = new MultipleCores();
+            multipleCores.Execute();
 
             Console.ReadKey();
         }

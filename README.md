@@ -6,6 +6,13 @@ Learn how to use threads in c#.
  - Threads allocates a bit more of memory. 
  - Do not block threads! Because if you are using thread pool it is going to create more and more threads.
  
+## TPL (Thread Parallel Library)
+ - TPL Encapsulates multi-core execution.
+
+ ## Threads in background vs foreground
+ - Background can be ignored at any point in time.
+ - Foreground threads have the ability to prevent the current application from terminating..
+
 ## TLS (Thread Location Storage)
  -  Is a computer programming method that uses static or global memory local to a thread.
 
@@ -32,6 +39,11 @@ Learn how to use threads in c#.
 ## Timer
  - It's better to create Timers rather Threads to execute something in some interval.
  - Do not let your threads sleep, always it's a bad idea.
+
+# CSharp Concepts
+
+## CLR (Common Language Runtime)
+ - The .NET Framework provides a run-time environment called the common language runtime, which runs the code and provides services that make the development process easier.
 
 ## Garbage Collector
  - Identify process that can be destroyed and clean it. It helps the memory usage.
