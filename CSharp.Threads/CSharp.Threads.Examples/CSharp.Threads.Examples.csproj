@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Async Await\FileReader.cs" />
     <Compile Include="Basics\MultipleCores.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramAsync.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\Blocking.cs" />
     <Compile Include="Tasks\Dependencies.cs" />

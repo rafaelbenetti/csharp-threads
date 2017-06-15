@@ -1,7 +1,4 @@
 ﻿using CSharp.Threads.Examples.Basics;
-using CSharp.Threads.Examples.Tasks;
-using CSharp.Threads.Examples.Thread_Pool;
-using CSharp.Threads.Examples.Timers;
 using System;
 
 namespace CSharp.Threads.Examples
@@ -43,8 +40,10 @@ namespace CSharp.Threads.Examples
             //threading.Execute(8);
 
             // Basics
-            var multipleCores = new MultipleCores();
-            multipleCores.Execute();
+            //var multipleCores = new MultipleCores();
+            //multipleCores.Execute();
+
+            ProgramAsync.Execute();
 
             Console.ReadKey();
         }

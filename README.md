@@ -6,15 +6,9 @@ Learn how to use threads in c#.
  - Threads allocates a bit more of memory. 
  - Do not block threads! Because if you are using thread pool it is going to create more and more threads.
  
-## TPL (Thread Parallel Library)
- - TPL Encapsulates multi-core execution.
-
  ## Threads in background vs foreground
  - Background can be ignored at any point in time.
  - Foreground threads have the ability to prevent the current application from terminating..
-
-## TLS (Thread Location Storage)
- -  Is a computer programming method that uses static or global memory local to a thread.
 
 ## Context Switch
  - One CPU can run just one thing at time, it means that using multi-thread in a single core CPU is fake!!!
@@ -33,8 +27,40 @@ Learn how to use threads in c#.
  - You can manage, get exception and also get a typed result.
  - With tasks, you have more control of your threads.
 
+## Async and Await
+ - Async: This keyword is used to qualify a function as an asynchronous function. In other words, if we specify the async keyword in front of a function then we can call this function asynchronously. Have a look at the syntax of the asynchronous method.
+
+	```cs
+	public async void CallProcess()
+	{
+	}
+	```
+ - Await: Very similar to wait, right? Yes this keyword is used when we want to call any function asynchronously. Have a look at the following example to understand how to use the await keyword. Let's think; in the following we have defined a long-running process.
+
+	```cs
+	public static Task LongProcess()
+	{
+		return Task.Run(() =>
+		{
+			System.Threading.Thread.Sleep(5000);
+		});
+	}
+	```
+
+ - Now, we want to call this long process asynchronously. Here we will use the await keyword.
+
+	```cs
+	await LongProcess();
+	```
+## TPL (Thread Parallel Library)
+ - TPL Encapsulates multi-core execution.
+
 ## Parallel (For, Foreach, Invoke)
  - Used when you would like to run some parallel tasks and the order doesn't matter.
+ - (For, Foreach and Invoke) All them runs in parallel changing just the sintax.
+
+## TLS (Thread Location Storage)
+ -  Is a computer programming method that uses static or global memory local to a thread.
 
 ## Timer
  - It's better to create Timers rather Threads to execute something in some interval.
