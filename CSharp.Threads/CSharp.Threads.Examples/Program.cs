@@ -1,4 +1,5 @@
 ﻿using CSharp.Threads.Examples.Basics;
+using CSharp.Threads.Examples.Lock;
 using System;
 
 namespace CSharp.Threads.Examples
@@ -38,12 +39,16 @@ namespace CSharp.Threads.Examples
             //threading.Execute(6);
             //threading.Execute(7);
             //threading.Execute(8);
-
+            
             // Basics
             //var multipleCores = new MultipleCores();
             //multipleCores.Execute();
 
-            ProgramAsync.Execute();
+            // Async Await
+            //ProgramAsync.Execute();
+
+            // Lock
+            Restroom.Enter();
 
             Console.ReadKey();
         }

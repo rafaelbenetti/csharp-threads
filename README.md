@@ -59,12 +59,67 @@ Learn how to use threads in c#.
  - Used when you would like to run some parallel tasks and the order doesn't matter.
  - (For, Foreach and Invoke) All them runs in parallel changing just the sintax.
 
+## Lock
+ - The lock keyword ensures that one thread does not enter a critical section of code while another thread is in the critical section. If another thread tries to enter a locked code, it will wait, block, until the object is released.
+
+ - The lock keyword calls Enter at the start of the block and Exit at the end of the block. lock keyword actually handles Monitor class at back end.
+
+ 	For example:
+
+	```cs
+	private static readonly Object objectToControlLock = new Object();
+
+	lock (objectToControlLock)
+	{
+		// critical section
+	}
+	```	
+	But, what really happens:
+	
+	```cs
+	private static readonly Object objectToControlLock = new Object();
+	private bool lockWasTaken = false;
+	
+	var temp = objectToControlLock;
+
+	try
+	{
+		Monitor.Enter(temp, ref lockWasTaken);
+		// critical section
+	}
+	finally
+	{
+		if (lockWasTaken)
+		{
+			Monitor.Exit(temp); 
+		}
+	}
+	```
+
 ## TLS (Thread Location Storage)
  -  Is a computer programming method that uses static or global memory local to a thread.
 
 ## Timer
  - It's better to create Timers rather Threads to execute something in some interval.
  - Do not let your threads sleep, always it's a bad idea.
+
+# CSharp Commands
+
+ - Get Logical Processors
+	```cs
+	Environment.ProcessorCount
+	```
+
+ - Set number of Logical Processors
+	```cs
+	int numberOfProcessors = 4;
+    Process.GetCurrentProcess().ProcessorAffinity = (IntPtr)numberOfProcessors;
+	```
+
+- Get Thread Id
+	```cs
+	Thread.CurrentThread.ManagedThreadId
+	```
 
 # CSharp Concepts
 
