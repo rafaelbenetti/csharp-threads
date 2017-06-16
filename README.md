@@ -96,6 +96,25 @@ Learn how to use threads in c#.
 	}
 	```
 
+	You can lock "this" object using this attribute. (It is bad lock using this)
+
+	```cs
+	class BathRoomStall 
+	{
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public void BeUsed()
+		{
+			Console.WriteLine("Doing our thing...");
+			Thread.Sleep(2000);
+		}
+	}
+	```
+## Lock Conclusions
+ - You must lock the Danger Zone.
+ - You must encapsulate the locks into a class to prevent programmers mistakes.
+ - It is a bad idea use this in the lock. Example use the same class as the object to lock.
+ - IMPORTANT - If you have two methods using the same object for lock, remember that it are goint to wait one method complete to go to the second method.
+
 ## Race Conditions
  - Many resources trying to access the Danger Zone at the same time.
  - It occurs using multi-tread.
@@ -109,7 +128,7 @@ Learn how to use threads in c#.
  - It is the code that cannot be shared with two threads.
 
 ## TLS (Thread Location Storage)
- -  Is a computer programming method that uses static or global memory local to a thread.
+ - Is a computer programming method that uses static or global memory local to a thread.
 
 ## Timer
  - It's better to create Timers rather Threads to execute something in some interval.
