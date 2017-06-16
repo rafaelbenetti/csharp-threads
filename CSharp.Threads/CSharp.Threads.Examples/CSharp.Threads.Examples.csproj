@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Async Await\FileReader.cs" />
     <Compile Include="Basics\MultipleCores.cs" />
+    <Compile Include="Lock\LockIntelligentWay.cs" />
+    <Compile Include="Lock\LockJustOnePart.cs" />
     <Compile Include="Lock\Restroom.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramAsync.cs" />

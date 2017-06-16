@@ -96,6 +96,18 @@ Learn how to use threads in c#.
 	}
 	```
 
+## Race Conditions
+ - Many resources trying to access the Danger Zone at the same time.
+ - It occurs using multi-tread.
+
+## Deadlocks
+ - [Deadlock Wikipedia](https://en.wikipedia.org/wiki/Deadlock)
+ - In concurrent computing, a deadlock is a state in which each member of a group of actions, is waiting for some other member to release a lock.[1] Deadlock is a common problem in multiprocessing systems, parallel computing, and distributed systems, where software and hardware locks are used to handle shared resources and implement process synchronization.
+ - In an operating system, a deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process. If a process is unable to change its state indefinitely because the resources requested by it are being used by another waiting process, then the system is said to be in a deadlock.
+
+## Danger Zone (Critical Section)
+ - It is the code that cannot be shared with two threads.
+
 ## TLS (Thread Location Storage)
  -  Is a computer programming method that uses static or global memory local to a thread.
 
@@ -133,3 +145,7 @@ Learn how to use threads in c#.
  - Delegates allow methods to be passed as parameters.
  - Delegates can be used to define callback methods.
  - Delegates can be chained together; for example, multiple methods can be called on a single event.
+
+ # References
+
+ - [Threads - Beginner Guide](http://www.mono-project.com/archived/threadsbeginnersguide/)
