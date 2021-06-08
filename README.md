@@ -2,8 +2,12 @@
 Learn how to use threads in c#.
 
 ## Threads 
- - Even using virtualization CPU core, at the end of the day, the threads are just running in the same single CPU core.
- - Threads allocates a bit more of memory. 
+ - Is a lower-level concept when you start a new one it will be a separeted thread.
+ - Even using virtualization CPU core, at the end of the day, the threads are just running in the same single CPU core. 
+ - Doesn't executes in the thread pool.
+ - Each thread you have consumes an amount of memory for its stack.
+ - And adds additional CPU overhead as the processor context-switch between threads.
+ - Operations: you can Abort() or Suspend() or Resume()
  - Do not block threads! Because if you are using thread pool it is going to create more and more threads.
  
  ## Threads in background vs foreground
@@ -115,14 +119,49 @@ Learn how to use threads in c#.
  - It is a bad idea use this in the lock. Example use the same class as the object to lock.
  - IMPORTANT - If you have two methods using the same object for lock, remember that it are goint to wait one method complete to go to the second method.
 
+## Mutex
+ - They can be accessed from multiple processes. 
+ - [Named] It is eligible to be a system-wide Mutex that can be accessed from multiple processes.
+ - [Unnamed] It is an anonymous Mutex which can only be accessed within the process in which it is created.
+ - WaitOne method returns true for free critical section and false for busy critical section.
+ - ReleaseMutex release the critical code.
+
+```c
+private readonly Mutex mutex = new Mutex(false, "NamedMutex");
+public void ThreadSafeMethod() {
+    mutex.WaitOne();
+    try {
+        /* critical code */
+    } 
+    finally {
+        mutex.ReleaseMutex();
+    }
+}
+ ```
+
+## Semaphore
+ - They can be named an unnamed just as mutex.
+ - A semaphore does the same as a mutex but allows x number of threads to enter.
+ 
+ ```c
+ Semaphore semaphoreObject = new Semaphore(initialCount: 0, maximumCount: 5, name: "MyUniqueNameApp");
+
+ semaphoreObject.WaitOne();
+ Console.WriteLine("Doing some stuff");
+ semaphoreObject.Release();
+ ```
+
 ## Race Conditions
  - Many resources trying to access the Danger Zone at the same time.
  - It occurs using multi-tread.
 
-## Deadlocks
- - [Deadlock Wikipedia](https://en.wikipedia.org/wiki/Deadlock)
- - In concurrent computing, a deadlock is a state in which each member of a group of actions, is waiting for some other member to release a lock.[1] Deadlock is a common problem in multiprocessing systems, parallel computing, and distributed systems, where software and hardware locks are used to handle shared resources and implement process synchronization.
- - In an operating system, a deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process. If a process is unable to change its state indefinitely because the resources requested by it are being used by another waiting process, then the system is said to be in a deadlock.
+## Deadlock
+ - A lock occurs when multiple processes try to access the same resource at the same time.
+    - One process loses out and must wait for the other to finish.  
+ - Is a state in which each member of a group of actions is waiting for some other member to release a lock.
+ - A deadlock occurs when the waiting process is still holding on to another resource that the first needs before it can finish.
+ - A is waiting for B release a resource and B is waiting for A release a resource.
+ - [Prevent] Reduce the need to lock anything as much as you can.
 
 ## Danger Zone (Critical Section)
  - It is the code that cannot be shared with two threads.
